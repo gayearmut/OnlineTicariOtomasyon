@@ -1,0 +1,47 @@
+﻿@using OnlineTicariOtomasyon.Models.Siniflar
+@model List<Cariler>
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 style="margin-top:20px">CARİLER/MÜŞTERİLER</h2>
+<br />
+<table class="table table-striped">
+	<tr>
+		<th>ID</th>
+		<th>Ad</th>
+		<th>Soyad</th>
+		<th>Şehir</th>
+		<th>Mail</th>
+		<th>Sil</th>
+		<th>Güncelle</th>
+		<th>Detaylar</th>
+
+	</tr>
+
+	@foreach (var m in Model)
+	{
+		<tr>
+			<td>@m.CariID</td>
+			<td>@m.CariAd</td>
+			<td>@m.CariSoyad</td>
+			<td>@m.CariSehir</td>
+			<td>@m.CariMail</td>
+			<td>
+				<a href="/Cari/CariSil/@m.CariID" class="btn btn-danger"><i class="fa fa-trash"></i> Sil</a>
+			</td>
+			<td>
+				<a href="/Cari/CariGetir/@m.CariID" class="btn btn-warning"><i class="fa fa-undo"></i> Güncelle</a>
+			</td>
+			<td>
+				<a href="/Cari/SatisGecmisi/@m.CariID" class="btn btn-info"><i class="fa fa-history"></i> Satış Geçmişi</a>
+			</td>
+			
+
+		</tr>
+	}
+</table>
+
+<a href="/Cari/CariEkle" class="btn btn-primary">Yeni Cari Ekle</a>
+
